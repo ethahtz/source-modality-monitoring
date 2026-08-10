@@ -1,0 +1,42 @@
+# Verified against Python 3.13. The floors below are the minimum versions that
+# support the model architectures and APIs this code uses; the comments give the
+# versions the paper's experiments were actually run with.
+
+# Core model stack.
+# transformers >= 4.52 is required: the code loads every VLM through
+# AutoModelForImageTextToText with no trust_remote_code, so it needs the
+# native implementations -- Qwen2.5-VL landed in 4.49, Gemma-3 in 4.50 and
+# InternVL3 in 4.52. Run with 4.57.3.
+torch>=2.1.0                    # run with 2.9.1
+torchvision>=0.16.0             # run with 0.24.1
+transformers>=4.52.0            # run with 4.57.3
+accelerate>=0.26.0              # required by device_map="auto"; run with 1.12.0
+
+# Tokenizer support. LLaVA-1.5 and InstructBLIP use SentencePiece-based Llama
+# tokenizers; transformers needs both of these to build the fast tokenizer when
+# a repository does not ship tokenizer.json.
+sentencepiece>=0.1.99           # run with 0.2.1
+protobuf>=3.20.0                # run with 6.33.2
+
+# Datasets: Flickr30k is pulled from the Hub (MSCOCO is loaded from disk).
+datasets>=2.14.0                # run with 4.4.1
+
+# Dataset construction: caption dissimilarity filtering (Section 3.2).
+sentence-transformers>=2.2.0    # run with 5.2.3
+
+# Representation analysis: linear probes with 3-fold CV (Section 4.2).
+scikit-learn>=1.0.0             # run with 1.8.0
+
+# LLM judge (Section 3.3).
+openai>=1.0.0                   # run with 2.29.0
+python-dotenv>=1.0.0            # run with 1.2.2
+
+# Arrays, imaging, progress.
+numpy>=1.24.0                   # run with 2.3.5
+pillow>=9.0.0                   # run with 12.0.0
+tqdm>=4.60.0                    # run with 4.67.1
+
+# Notebooks and figures.
+matplotlib>=3.6.0               # run with 3.10.7
+pandas>=1.5.0                   # run with 2.3.3
+jupyter>=1.0.0
