@@ -131,7 +131,7 @@ Some of the important arguments include:
 - `prompt_format`: the word used to refer to the text source, choose from `image_caption` ("Caption: X."), `image_text` ("Text: X."), and `image_document` ("Document: X."). This is the manipulation behind Figure 5.
 - `order`: the order in which the two sources appear, choose from `icq` (image, then caption, then query) and `ciq` (caption first). Every configuration in the paper is run both ways and averaged, to rule out input-order effects. InstructBLIP is the exception, as it has a fixed input order.
 - `modify_inputs`: the marker perturbation, see [Marker Perturbations](#marker-perturbations) below. Use `none` for the unperturbed condition.
-- `version`: the prompt template version. Use `1` to match the paper.
+- `version`: the run version. Use `1` for the first version.
 
 Results are written to a path encoding the full configuration:
 
